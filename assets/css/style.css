@@ -1,0 +1,211 @@
+@charset "utf-8";
+
+:root {
+    --app-dark-background: #141414;
+    --app-medium-grey: #2d2d2d;
+    --app-yellow: #ffff00;
+    --app-white: #fff;
+    --app-green: #7cfc00;
+    --app-pink: #ff007f;
+    --app-red: #ff3333; 
+    --app-blue: #0000e6;
+    --app-light-grey:#f6f6f6; 
+    --app-bg-dashboard: #808080ab;
+    --app-purple: #9a009a;
+}
+
+body {
+    font-family: 'Audiowide', Arial, sans-serif ;
+    text-rendering: geometricPrecision;
+    background-color: var(--app-dark-background);
+    overflow: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+main {
+    overflow: auto;
+    height: 100svh;
+    background-image: url("../img/cyber-city2.jpg");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard{
+    width: 500px;
+    height: 600px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--app-bg-dashboard);
+    border: 2px solid var(--app-pink);
+    border-radius: 5px;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    
+    h1 {
+        font-size: 50px;
+        letter-spacing: 4px;
+        color: var(--app-pink);
+        text-align: center;
+        margin: 30px;
+        text-shadow: 1px 1px var(--app-blue);
+    }
+
+    .timeout{
+        width: 350px;
+        height: 70px;
+        font-size: 30px;
+        font-weight: 500;
+        text-align: center;
+        font-variant:tabular-nums;
+    }
+
+    .word-display {
+        font-size: 40px;
+        color: var(--app-green);
+        text-align: center;
+        padding-top: 20px;
+        width: 400px;
+        height: 100px;
+        background: var(--app-purple);
+        border: 1px solid var(--app-blue);
+        border-radius: 5px;
+        font-variant:tabular-nums;
+    }
+
+    .counter p{
+        font-size: 22px;
+        margin: 30px;
+        text-align: center;
+        font-variant:tabular-nums;
+    }
+
+
+    .input-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-text {
+        font-size: 40px;
+        color: var(--app-medium-grey);
+        text-align: center;
+        width: 400px;
+        height: 70px;
+        background: var(--app-light-grey);
+        border: 1px solid var(--app-blue);
+        border-radius: 5px;
+        font-variant: tabular-nums;
+    }
+
+    .input-text::placeholder { 
+        color: var(--app-medium-grey);
+    }
+
+    .setting-buttons{
+        margin: 30px;
+        gap: 30px;
+
+        .btn {
+            width: 120px;
+            height: 40px;
+            font-size: 20px;
+            background: var(--app-pink);
+            border: 1px solid var(--app-blue);
+            border-radius: 5px;
+            color: var(--app-white);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            border: 2px solid var(--app-yellow);
+            transition: all 0.25s ease-in-out; 
+        }
+    }
+}
+
+.copyright {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--app-yellow);
+    margin-top: 20px;
+    text-shadow: 1px 1px var(--app-dark-background);
+}
+
+.instruction-button { 
+    position: fixed; 
+    top: 20px; 
+    right: 20px; 
+    width: 150px; 
+    height: 50px; 
+    background-color: var(--app-purple); 
+    border: 1px solid var(--app-blue);
+    border-radius: 25px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: var(--app-green); 
+    cursor: pointer; 
+    text-align: center; 
+    font-size: 18px; 
+}
+
+.instruction-button:hover {
+    border: 2px solid var(--app-green);
+    transition: all 0.25s ease-in-out; 
+}
+
+.modal-container {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999    
+}
+
+.modal {
+    width: 450px;
+    border-radius: 5px;
+    background-image: url('../img/cyborg.jpg'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid var(--app-purple);
+        
+    h1 { 
+        font-size: 35px; 
+        font-weight: 600; 
+        color: var(--app-green); 
+        text-align: center;
+        margin: 20px;
+        text-shadow: 1px 1px var(--app-dark-background);
+    } 
+    
+    p { 
+        text-align: left; 
+        font-size: 16px; 
+        font-weight: 500; 
+        color: var(--app-green); 
+        text-shadow: 1px 1px var(--app-dark-background);
+        padding: 0 20px 10px 20px;
+    }  
+}
+
+
+
+
+
