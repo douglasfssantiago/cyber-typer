@@ -5,7 +5,7 @@ your typing speed and accuracy! Dive into the futuristic world of Cyber Typer
 where you challenge yourself to type as many words as possible within a set 
 time limit. Perfect for improving your typing skills while having fun!
 
-Visit the website [here](https://douglasfssantiago.github.io/contact-list/) 
+Visit the website [here](https://douglasfssantiago.github.io/cyber-typer/) 
 
 ![](./assets/img/readme1.png)
 
@@ -35,8 +35,8 @@ effortlessly with the restart button.
 the following command:
 
 ```bash
-git clone https://github.com/douglasfssantiago/contact-list.git
-cd contact-list
+git clone https://github.com/douglasfssantiago/cyber-typer.git
+cd cyber-typer
 ```
 2. Explore the Files: Once the repository is cloned, explore the different files 
 and directories to understand the project structure.
