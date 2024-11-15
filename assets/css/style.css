@@ -13,7 +13,7 @@
     --app-red: #ff3333; 
     --app-blue: #0000e6;
     --app-light-grey:#f6f6f6; 
-    --app-bg-dashboard: #808080ab;
+    --app-bg-dashboard: rgba(128, 128, 128, 0.949);
     --app-purple: #9a009a;
 }
 
@@ -21,6 +21,10 @@ body {
     font-family: 'Audiowide', 'Nunito sans', Arial, sans-serif ;
     text-rendering: geometricPrecision;
     background-color: var(--app-dark-background);
+    background-image: url("../img/cyber-city2.jpg");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
     overflow: auto;
 }
 
@@ -28,17 +32,29 @@ body {
     display: flex;
 }
 
+.hidden { 
+    visibility: hidden; 
+}
+
 /*----------------------------------------------------*/
 /*                  Main  / Background                */
 /*----------------------------------------------------*/
 
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+
 main {
     overflow: auto;
     height: 100svh;
-    background-image: url("../img/cyber-city2.jpg");
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -84,6 +100,7 @@ main {
         font-size: 30px;
         font-weight: 500;
         text-align: center;
+        color: var(--app-white);
         font-variant:tabular-nums;
     }
 
@@ -104,6 +121,7 @@ main {
         font-size: 22px;
         margin: 30px;
         text-align: center;
+        color: var(--app-white);
         font-variant:tabular-nums;
     }
 

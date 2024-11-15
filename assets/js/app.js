@@ -7,6 +7,7 @@ const inputText = select('.input-text');
 const restartBtn = select('.restart-button');
 const instructionBtn = select('#instruction-button');
 const instructionWindow = select('#modal-popup'); 
+const backgroundVideo = document.getElementById('background-video');
 const cyberSound = new Audio('./assets/audio/cyber-sound.wav');
 const laserShoot = new Audio('./assets/audio/laser-shot.wav');
 const gameOver = new Audio('./assets/audio/game-over.wav');
@@ -108,6 +109,9 @@ function startGame() {
         showRandomWord();
         cyberSound.play();
         cyberSound.loop = true;
+        backgroundVideo.style.opacity = 1; 
+        backgroundVideo.play();
+        restartBtn.classList.remove('hidden');
         gameInterval = setInterval(() => {
             if (stopwatch > 0 && isGameActive) {
                 stopwatch--;
@@ -125,12 +129,13 @@ function restartGame() {
     inputText.disabled = false; 
     inputText.value = "";
     inputText.placeholder = "click to start!";
-    inputText.focus();
     wordDisplay.innerText = "";
     timeout.innerHTML = `<i class="fa-solid fa-stopwatch"></i> 00:00`;
     counter.innerText = "0 Points";
     cyberSound.pause();
     cyberSound.currentTime = 0;
+    backgroundVideo.style.opacity = 0;
+    restartBtn.classList.add('hidden');
     clearInterval(gameInterval);
 }
 
@@ -141,6 +146,7 @@ function endGame() {
     inputText.placeholder = "game over";
     cyberSound.pause();
     gameOver.play();
+    backgroundVideo.style.opacity = 0; 
 
     const percentage = (score / wordBank.length) * 100;
     const newScore = new Score(score, percentage.toFixed(2)); 
@@ -179,6 +185,8 @@ listen('click', instructionWindow, (event) => {
         closeModal();
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => { restartBtn.classList.add('hidden'); });
 
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
