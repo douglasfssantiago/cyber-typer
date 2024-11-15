@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+/*----------------------------------------------------*/
+/*                    General rule                    */
+/*----------------------------------------------------*/
 :root {
     --app-dark-background: #141414;
     --app-medium-grey: #2d2d2d;
@@ -15,7 +18,7 @@
 }
 
 body {
-    font-family: 'Audiowide', Arial, sans-serif ;
+    font-family: 'Audiowide', 'Nunito sans', Arial, sans-serif ;
     text-rendering: geometricPrecision;
     background-color: var(--app-dark-background);
     overflow: auto;
@@ -24,6 +27,10 @@ body {
 .flex {
     display: flex;
 }
+
+/*----------------------------------------------------*/
+/*                  Main  / Background                */
+/*----------------------------------------------------*/
 
 main {
     overflow: auto;
@@ -36,6 +43,18 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+.copyright {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--app-yellow);
+    margin-top: 20px;
+    text-shadow: 1px 1px var(--app-dark-background);
+}
+
+/*----------------------------------------------------*/
+/*                   Game / Dashboard                 */
+/*----------------------------------------------------*/
 
 .dashboard{
     width: 500px;
@@ -133,13 +152,9 @@ main {
     }
 }
 
-.copyright {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--app-yellow);
-    margin-top: 20px;
-    text-shadow: 1px 1px var(--app-dark-background);
-}
+/*----------------------------------------------------*/
+/*                 Modal / Instructions               */
+/*----------------------------------------------------*/
 
 .instruction-button { 
     position: fixed; 
@@ -204,8 +219,3 @@ main {
         padding: 0 20px 10px 20px;
     }  
 }
-
-
-
-
-

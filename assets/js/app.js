@@ -6,9 +6,10 @@ const counter = select('.counter p');
 const inputText = select('.input-text');
 const restartBtn = select('.restart-button');
 const instructionBtn = select('#instruction-button');
-const modalPopup = select('#modal-popup'); 
-const backgroundMusic = new Audio('./assets/audio/cyber-sound.wav');
-const confirmationSound = new Audio('./assets/audio/laser-shot.wav');
+const instructionWindow = select('#modal-popup'); 
+const cyberSound = new Audio('./assets/audio/cyber-sound.wav');
+const laserShoot = new Audio('./assets/audio/laser-shot.wav');
+const gameOver = new Audio('./assets/audio/game-over.wav');
 const scores = [];
 const wordBank = [ 
     'dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 
@@ -44,7 +45,7 @@ const wordBank = [
     'film', 'jupiter' 
 ];  
 
-let timeLeft = 60; 
+let stopwatch = 99; 
 let score = 0; 
 let isGameActive = false; 
 let wordList = [...wordBank]; 
@@ -84,7 +85,7 @@ function listen(event, selector, callback) {
 }
 
 function updateTimer() {
-    timeout.innerHTML = `<i class="fa-solid fa-stopwatch"></i> ${timeLeft}s`;
+    timeout.innerHTML = `<i class="fa-solid fa-stopwatch"></i> ${stopwatch}s`;
 }
 
 function showRandomWord() {
@@ -97,7 +98,7 @@ function startGame() {
     if (!isGameActive) {
         isGameActive = true;
         score = 0;
-        timeLeft = 60;
+        stopwatch = 99;
         wordList = [...wordBank];
         inputText.value = "";
         inputText.placeholder = "";
@@ -105,11 +106,11 @@ function startGame() {
         inputText.focus();
         updateTimer();
         showRandomWord();
-        backgroundMusic.play();
-        backgroundMusic.loop = true;
+        cyberSound.play();
+        cyberSound.loop = true;
         gameInterval = setInterval(() => {
-            if (timeLeft > 0 && isGameActive) {
-                timeLeft--;
+            if (stopwatch > 0 && isGameActive) {
+                stopwatch--;
                 updateTimer();
             } else {
                 clearInterval(gameInterval);
@@ -128,8 +129,8 @@ function restartGame() {
     wordDisplay.innerText = "";
     timeout.innerHTML = `<i class="fa-solid fa-stopwatch"></i> 00:00`;
     counter.innerText = "0 Points";
-    backgroundMusic.pause();
-    backgroundMusic.currentTime = 0;
+    cyberSound.pause();
+    cyberSound.currentTime = 0;
     clearInterval(gameInterval);
 }
 
@@ -137,8 +138,9 @@ function endGame() {
     isGameActive = false;
     inputText.disabled = true;
     inputText.value = "";
-    inputText.placeholder = "click to restart!";
-    backgroundMusic.pause();
+    inputText.placeholder = "game over";
+    cyberSound.pause();
+    gameOver.play();
 
     const percentage = (score / wordBank.length) * 100;
     const newScore = new Score(score, percentage.toFixed(2)); 
@@ -151,7 +153,7 @@ function checkInput() {
         counter.innerText = `${score} Points`;
         wordList = wordList.filter(word => word !== currentWord);
         inputText.value = "";
-        confirmationSound.play();
+        laserShoot.play();
         if (wordList.length === 0) {
             endGame();
         } else {
@@ -161,19 +163,19 @@ function checkInput() {
 }
 
 function openModal() { 
-    modalPopup.style.display = 'flex'; 
+    instructionWindow.style.display = 'flex'; 
 } 
 
 function closeModal() { 
-    modalPopup.style.display = 'none'; 
+    instructionWindow.style.display = 'none'; 
 }
 
 listen('click', inputText, startGame); 
 listen('click', restartBtn, restartGame);
 listen('input', inputText, checkInput);
 listen('click', instructionBtn, openModal);
-listen('click', modalPopup, (event) => {
-    if (event.target === modalPopup) {
+listen('click', instructionWindow, (event) => {
+    if (event.target === instructionWindow) {
         closeModal();
     }
 });

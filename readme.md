@@ -15,7 +15,7 @@ Visit the website [here](https://douglasfssantiago.github.io/cyber-typer/)
 
 * Real-time Scoring: Keep track of your progress with real-time scoring as you type each correct word.
 
-* Countdown Timer: A 60-second timer keeps the game intense and fast-paced.
+* Countdown Timer: A 99-second timer keeps the game intense and fast-paced.
 
 * Audio Feedback: Enjoy background music that sets the mood and audio cues for each correct word typed.
 
