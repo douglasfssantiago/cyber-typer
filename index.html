@@ -20,9 +20,9 @@
         <script src="./assets/js/app.js" defer></script>
     </head>
     <body>
-        <video id="background-video" autoplay muted loop>
+        <video class="background-video" autoplay muted loop>
             <source src="./assets/video/vecteezy_metaverse-city-concept_39671959.mp4" type="video/mp4">
-        </video> 
+        </video>       
         <main class="flex">
             <div id="instruction-button" class="instruction-button"> 
                 <p>Instructions</p> 
@@ -54,7 +54,7 @@
                     <h1>Cyber Typer</h1>
                 </div>
                 <div class="timeout">
-                    <p><i class="fa-solid fa-stopwatch"></i>  00:00</p>
+                    <p><i class="fa-solid fa-stopwatch"></i></p>
                 </div>
                 <dir class="word-display">
                     <p></p>
@@ -66,7 +66,8 @@
                     <input type="text" placeholder="click to start!" class="input-text" maxlength="25">    
                 </div>
                 <div class="setting-buttons flex">
-                    <input type="button" value="Restart" class="restart-button btn">
+                    <input type="button" value="restart" class="restart-button btn">
+                    <input type="button" value="quit" class="quit-button btn">   
                 </div>
             </div>
             <div class="copyright">

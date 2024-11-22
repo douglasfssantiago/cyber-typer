@@ -5,9 +5,11 @@ const wordDisplay = select('.word-display p');
 const counter = select('.counter p');
 const inputText = select('.input-text');
 const restartBtn = select('.restart-button');
+const quitBtn = select('.quit-button');
 const instructionBtn = select('#instruction-button');
 const instructionWindow = select('#modal-popup'); 
-const backgroundVideo = document.getElementById('background-video');
+const backgroundVideo = select('.background-video');
+const copyright = select('.copyright');
 const cyberSound = new Audio('./assets/audio/cyber-sound.wav');
 const laserShoot = new Audio('./assets/audio/laser-shot.wav');
 const gameOver = new Audio('./assets/audio/game-over.wav');
@@ -111,7 +113,10 @@ function startGame() {
         cyberSound.loop = true;
         backgroundVideo.style.opacity = 1; 
         backgroundVideo.play();
+        quitBtn.classList.remove('hidden');
         restartBtn.classList.remove('hidden');
+        instructionBtn.classList.add('hidden');
+        copyright.classList.add('hidden');
         gameInterval = setInterval(() => {
             if (stopwatch > 0 && isGameActive) {
                 stopwatch--;
@@ -124,18 +129,21 @@ function startGame() {
     }    
 }
 
-function restartGame() {
+function quitGame() {
     isGameActive = false;
     inputText.disabled = false; 
     inputText.value = "";
     inputText.placeholder = "click to start!";
     wordDisplay.innerText = "";
-    timeout.innerHTML = `<i class="fa-solid fa-stopwatch"></i> 00:00`;
+    timeout.innerHTML = `<i class="fa-solid fa-stopwatch"></i>`;
     counter.innerText = "0 Points";
     cyberSound.pause();
     cyberSound.currentTime = 0;
     backgroundVideo.style.opacity = 0;
+    quitBtn.classList.add('hidden');
     restartBtn.classList.add('hidden');
+    instructionBtn.classList.remove('hidden');
+    copyright.classList.remove('hidden');
     clearInterval(gameInterval);
 }
 
@@ -151,6 +159,41 @@ function endGame() {
     const percentage = (score / wordBank.length) * 100;
     const newScore = new Score(score, percentage.toFixed(2)); 
     scores.push(newScore);
+}
+
+function restartGame() {
+    if (isGameActive) {
+        clearInterval(gameInterval); 
+    }
+
+    isGameActive = true; 
+    score = 0;
+    stopwatch = 99;
+    wordList = [...wordBank]; 
+    inputText.value = "";
+    inputText.placeholder = "";
+    inputText.disabled = false;
+    inputText.focus();  
+    updateTimer(); 
+    showRandomWord();    
+    counter.innerText = "0 Points"; 
+    cyberSound.play(); 
+    cyberSound.loop = true; 
+    backgroundVideo.style.opacity = 1; 
+    backgroundVideo.play();
+    restartBtn.classList.remove('hidden'); 
+    instructionBtn.classList.add('hidden'); 
+    copyright.classList.add('hidden'); 
+
+    gameInterval = setInterval(() => {
+        if (stopwatch > 0 && isGameActive) {
+            stopwatch--;
+            updateTimer();
+        } else {
+            clearInterval(gameInterval);
+            endGame();
+        }
+    }, 1000);
 }
 
 function checkInput() {
@@ -176,8 +219,9 @@ function closeModal() {
     instructionWindow.style.display = 'none'; 
 }
 
-listen('click', inputText, startGame); 
-listen('click', restartBtn, restartGame);
+listen('click', restartBtn, restartGame);  
+listen('click', inputText, startGame);
+listen('click', quitBtn, quitGame);
 listen('input', inputText, checkInput);
 listen('click', instructionBtn, openModal);
 listen('click', instructionWindow, (event) => {
@@ -186,13 +230,13 @@ listen('click', instructionWindow, (event) => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => { quitBtn.classList.add('hidden'); });
 document.addEventListener('DOMContentLoaded', () => { restartBtn.classList.add('hidden'); });
-
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         closeModal();
     }
     if (event.key === 'Escape' && isGameActive) {
-        restartGame();
+        quitGame();
     }
 });
