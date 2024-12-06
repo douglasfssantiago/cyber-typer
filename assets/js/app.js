@@ -11,6 +11,8 @@ const restartBtn = select('.restart-button');
 const quitBtn = select('.quit-button');
 const instructionBtn = select('#instruction-button');
 const instructionWindow = select('#modal-popup'); 
+const scoreBtn = select('#score-button');
+const scoreWindow = select('#modal-score');
 const backgroundVideo = select('.background-video');
 const copyright = select('.copyright');
 const cyberSound = new Audio('./assets/audio/cyber-sound.wav');
@@ -18,7 +20,7 @@ const laserShoot = new Audio('./assets/audio/laser-shot.wav');
 const gameOver = new Audio('./assets/audio/game-over.wav');
 const scores = [];
 
-let stopwatch = 99; 
+let stopwatch = 15; 
 let score = 0; 
 let isGameActive = false; 
 let wordList = [...wordBank]; 
@@ -71,7 +73,7 @@ function startGame() {
     if (!isGameActive) {
         isGameActive = true;
         score = 0;
-        stopwatch = 99;
+        stopwatch = 15;
         wordList = [...wordBank];
         inputText.value = "";
         inputText.placeholder = "";
@@ -86,6 +88,7 @@ function startGame() {
         quitBtn.classList.remove('hidden');
         restartBtn.classList.remove('hidden');
         instructionBtn.classList.add('hidden');
+        scoreBtn.classList.add('hidden');
         copyright.classList.add('hidden');
         gameInterval = setInterval(() => {
             if (stopwatch > 0 && isGameActive) {
@@ -113,6 +116,7 @@ function quitGame() {
     quitBtn.classList.add('hidden');
     restartBtn.classList.add('hidden');
     instructionBtn.classList.remove('hidden');
+    scoreBtn.classList.remove('hidden');
     copyright.classList.remove('hidden');
     clearInterval(gameInterval);
 }
@@ -138,7 +142,7 @@ function restartGame() {
 
     isGameActive = true; 
     score = 0;
-    stopwatch = 99;
+    stopwatch = 15;
     wordList = [...wordBank]; 
     inputText.value = "";
     inputText.placeholder = "";
@@ -153,6 +157,7 @@ function restartGame() {
     backgroundVideo.play();
     restartBtn.classList.remove('hidden'); 
     instructionBtn.classList.add('hidden'); 
+    scoreBtn.classList.add('hidden'); 
     copyright.classList.add('hidden'); 
 
     gameInterval = setInterval(() => {
@@ -185,10 +190,18 @@ function checkInput() {
 
 function openModal() { 
     instructionWindow.style.display = 'flex'; 
-} 
+}
 
 function closeModal() { 
     instructionWindow.style.display = 'none'; 
+}
+
+function openScoreModal() {
+    scoreWindow.style.display = 'flex';
+}
+
+function closeScoreModal() {
+    scoreWindow.style.display = 'none';
 }
 
 listen('click', restartBtn, restartGame);  
@@ -197,6 +210,7 @@ listen('click', quitBtn, quitGame);
 listen('input', inputText, validateInput); 
 listen('input', inputText, checkInput);
 listen('click', instructionBtn, openModal);
+listen('click', scoreBtn, openScoreModal);
 listen('DOMContentLoaded', document, () => { quitBtn.classList.add('hidden'); }); 
 listen('DOMContentLoaded', document, () => { restartBtn.classList.add('hidden'); });
 listen('click', instructionWindow, (event) => {
@@ -204,10 +218,15 @@ listen('click', instructionWindow, (event) => {
         closeModal();
     }
 });
-
+listen('click', scoreWindow, (event) => {
+    if (event.target === scoreWindow) {
+        closeScoreModal();
+    }
+});
 listen('keydown', (event) => {
     if (event.key === 'Escape') {
         closeModal();
+        closeScoreModal();
     }
     if (event.key === 'Escape' && isGameActive) {
         quitGame();
