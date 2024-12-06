@@ -78,26 +78,36 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(128, 124, 124);
+    border: 1px solid rgb(128, 124, 124);
     border-radius: 5px;
     backdrop-filter:blur(10px);
-    
+   /* background-image: url("../img/cyborg.jpg");
+    background-position: center;*/
     h1 {
         font-size: 50px;
         letter-spacing: 4px;
         color: var(--app-pink);
         text-align: center;
         margin: 30px;
-        text-shadow: 1px 1px var(--app-blue);
+        text-shadow: 0 0 5px #fff, 
+                    0 0 10px #fff, 
+                    0 0 20px #ff00ff, 
+                    0 0 30px #ff00ff, 
+                    0 0 40px #ff00ff, 
+                    0 0 50px #ff00ff, 
+                    0 0 60px #ff00ff;
     }
 
     .timeout{
         width: 350px;
         height: 70px;
-        font-size: 30px;
+        font-size: 40px;
         font-weight: 500;
         text-align: center;
-        color: var(--app-white);
+        color: #04ffff;
+        text-shadow: 0 0 1px #04ffff, 
+                    0 0 2px #04ffff,
+                    0 0 3px #04ffff;
         font-variant:tabular-nums;
     }
 
@@ -109,16 +119,19 @@ main {
         width: 400px;
         height: 100px;
         background: var(--app-purple);
-        border: 1px solid var(--app-blue);
+        border: 1px solid var(--app-green);
         border-radius: 5px;
         font-variant:tabular-nums;
     }
 
     .counter p{
-        font-size: 22px;
+        font-size: 30px;
+        font-weight: 500;
         margin: 30px;
         text-align: center;
-        color: var(--app-white);
+        color: #04ffff;
+        text-shadow: 0 0 1px #04ffff, 
+                    0 0 2px #04ffff; 
         font-variant:tabular-nums;
     }
 
@@ -172,14 +185,14 @@ main {
 /*                 Modal / Instructions               */
 /*----------------------------------------------------*/
 
-.instruction-button { 
+.inst-btn { 
     position: fixed; 
     top: 20px; 
     right: 20px; 
     width: 150px; 
     height: 50px; 
-    background-color: var(--app-purple); 
-    border: 1px solid var(--app-blue);
+    backdrop-filter:blur(10px);
+    border: 2px solid var(--app-green);
     border-radius: 25px; 
     display: flex; 
     justify-content: center; 
@@ -188,11 +201,12 @@ main {
     cursor: pointer; 
     text-align: center; 
     font-size: 18px; 
+    transition: all 0.25s ease-in-out; 
 }
 
 .instruction-button:hover {
-    border: 2px solid var(--app-green);
-    transition: all 0.25s ease-in-out; 
+    border: 3px solid var(--app-green);
+    font-weight: 600;
 }
 
 .modal-container {
@@ -209,18 +223,18 @@ main {
 }
 
 .modal {
-    width: 550px;
+    width: 500px;
     height: 650px;
     border-radius: 5px;
-    background-image: url('../img/cyborg.jpg'); 
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid var(--app-purple);
+    border: 2px solid rgb(128, 124, 124);
+    backdrop-filter:blur(50px);
         
     h1 { 
         font-size: 35px; 
-        font-weight: 600; 
+        font-weight: 500; 
         color: var(--app-green); 
         text-align: center;
         margin: 20px;
