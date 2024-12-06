@@ -273,15 +273,12 @@ listen('click', scoreWindow, (event) => {
         closeScoreModal();
     }
 });
-listen('keydown', (event) => {
+listen('keydown', document, (event) => {
     if (event.key === 'Escape') {
         closeModal();
         closeScoreModal();
-    }
-    if (event.key === 'Escape' && isGameActive) {
-        quitGame();
+        if (isGameActive) {
+            quitGame();
+        }
     }
 });
-
-
-
