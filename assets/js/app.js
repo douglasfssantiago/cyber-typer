@@ -23,7 +23,7 @@ const cyberSound = new Audio('./assets/audio/cyber-sound.wav');
 const laserShoot = new Audio('./assets/audio/laser-shot.wav');
 const gameOver = new Audio('./assets/audio/game-over.wav');
 
-let stopwatch = 40; 
+let stopwatch = 99; 
 let score = 0; 
 let isGameActive = false; 
 let wordList = [...wordBank]; 
@@ -62,7 +62,7 @@ function startGame() {
         isGameActive = true;
         dashboard.classList.remove('transparent-dashboard');
         score = 0;
-        stopwatch = 40;
+        stopwatch = 99;
         wordList = [...wordBank];
         inputText.value = "";
         inputText.placeholder = "";
@@ -148,7 +148,7 @@ function restartGame() {
 
     isGameActive = true; 
     score = 0;
-    stopwatch = 15;
+    stopwatch = 99;
     wordList = [...wordBank]; 
     inputText.value = "";
     inputText.placeholder = "";

@@ -1,0 +1,20 @@
+{
+  "name": "cyber-typer",
+  "version": "1.0.0",
+  "description": "Cyber Typer is a word typing game where the player earns points by typing words correctly within a given time limit. The game displays the top scores and updates the scoreboard after each game.",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "keywords": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Web Development"
+  ],
+  "author": "Douglas F S Santiago",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
