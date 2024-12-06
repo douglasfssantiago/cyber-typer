@@ -91,12 +91,12 @@ main {
         text-align: center;
         margin: 30px;
         text-shadow: 0 0 5px #fff, 
-                    0 0 10px #fff, 
-                    0 0 20px #ff00ff, 
-                    0 0 30px #ff00ff, 
-                    0 0 40px #ff00ff, 
-                    0 0 50px #ff00ff, 
-                    0 0 60px #ff00ff;
+                     0 0 10px #fff, 
+                     0 0 20px #ff00ff, 
+                     0 0 30px #ff00ff, 
+                     0 0 40px #ff00ff, 
+                     0 0 50px #ff00ff, 
+                     0 0 60px #ff00ff;
     }
 
     .display-elements {
@@ -111,10 +111,12 @@ main {
         font-size: 40px;
         font-weight: 500;
         text-align: center;
-        color: var(--app-green-neon);
-        text-shadow: 0 0 1px #04ffff, 
-                    0 0 2px #04ffff,
-                    0 0 3px #04ffff;
+        color: var(--app-blue);
+        text-shadow: 0 0 1px #fff, 
+                     0 0 2px #fff,
+                     0 0 3px #04ffff,
+                     0 0 4px #04ffff,
+                     0 0 5px #04ffff;
         font-variant:tabular-nums;
     }
 
@@ -136,9 +138,12 @@ main {
         font-weight: 500;
         margin: 30px;
         text-align: center;
-        color: var(--app-green-neon);
-        text-shadow: 0 0 1px #04ffff, 
-                    0 0 2px #04ffff; 
+        color: var(--app-blue);
+        text-shadow: 0 0 1px #fff, 
+                     0 0 2px #fff,
+                     0 0 3px #04ffff,
+                     0 0 4px #04ffff,
+                     0 0 5px #04ffff;
         font-variant:tabular-nums;
     }
 
@@ -175,18 +180,24 @@ main {
             height: 40px;
             font-size: 20px;
             background: var(--app-pink);
-            border: 1px solid var(--app-blue);
+            border: 1px solid var(--app-pink);
             border-radius: 5px;
             color: var(--app-white);
             cursor: pointer;
         }
 
         .btn:hover {
-            border: 2px solid var(--app-yellow);
+            border: 2px solid var(--app-white);
             transition: all 0.25s ease-in-out; 
         }
     }
 }
+.transparent-dashboard {
+    background-color: transparent;
+    backdrop-filter: none;
+    border: none;
+}
+
 
 /*----------------------------------------------------*/
 /*                 Modal / Instructions               */
