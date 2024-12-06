@@ -37,6 +37,10 @@ body {
     visibility: hidden; 
 }
 
+.hidden-element { 
+    display: none;
+}
+
 /*----------------------------------------------------*/
 /*                  Main  / Background                */
 /*----------------------------------------------------*/
@@ -81,8 +85,7 @@ main {
     border: 1px solid rgb(128, 124, 124);
     border-radius: 5px;
     backdrop-filter:blur(10px);
-   /* background-image: url("../img/cyborg.jpg");
-    background-position: center;*/
+   
     h1 {
         font-size: 50px;
         letter-spacing: 4px;
@@ -98,6 +101,12 @@ main {
                     0 0 60px #ff00ff;
     }
 
+    .display-elements {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
     .timeout{
         width: 350px;
         height: 70px;
