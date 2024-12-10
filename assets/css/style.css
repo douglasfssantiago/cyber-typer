@@ -175,7 +175,7 @@ main {
         gap: 30px;
         display: inline-block;
 
-        .btn {
+        .restart-button {
             width: 120px;
             height: 40px;
             font-size: 20px;
@@ -186,12 +186,29 @@ main {
             cursor: pointer;
         }
 
-        .btn:hover {
+        .restart-button:hover {
+            border: 2px solid var(--app-white);
+            transition: all 0.25s ease-in-out; 
+        }
+
+        .quit-button {
+            width: 120px;
+            height: 40px;
+            font-size: 20px;
+            background: var(--app-blue);
+            border: 1px solid var(--app-blue);
+            border-radius: 5px;
+            color: var(--app-white);
+            cursor: pointer;
+        }
+        
+        .quit-button:hover {
             border: 2px solid var(--app-white);
             transition: all 0.25s ease-in-out; 
         }
     }
 }
+
 .transparent-dashboard {
     background-color: transparent;
     backdrop-filter: none;

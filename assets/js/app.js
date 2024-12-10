@@ -254,7 +254,7 @@ listen('input', inputText, validateInput);
 listen('input', inputText, checkInput);
 listen('click', instructionBtn, openModal);
 listen('click', scoreBtn, openScoreModal);
-listen('DOMContentLoaded', document, () => { 
+listen('load', window, () => { 
     dashboard.classList.add('transparent-dashboard'); 
     quitBtn.classList.add('hidden'); 
     restartBtn.classList.add('hidden'); 
